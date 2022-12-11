@@ -1353,7 +1353,7 @@
     (def screw-offset-tm [9.5 -4.5 0])
     (def screw-offset-bm [13 -7 0]))
 (when (and (= thumb-style "cf") (false? inner-column))
-    (def screw-offset-bl [-7.7 2 0])
+    (def screw-offset-bl [-9.7 2 0])
     (def screw-offset-tm [9.5 -4.5 0])
     (def screw-offset-bm [13 -7 0]))
 (when (and (= thumb-style "mini") inner-column)
@@ -1374,7 +1374,7 @@
     (def screw-offset-bm [8 -1 0]))
 
          (defn screw-insert-all-shapes [bottom-radius top-radius height]
-  (union (screw-insert 0 0         bottom-radius top-radius height [8 10.5 0])
+  (union (screw-insert 0 0         bottom-radius top-radius height [10 10.5 0])
          (screw-insert 0 lastrow   bottom-radius top-radius height screw-offset-bl)
          (screw-insert lastcol lastrow  bottom-radius top-radius height screw-offset-br)
          (screw-insert lastcol 0         bottom-radius top-radius height screw-offset-tr)
