@@ -53,6 +53,8 @@
 (def wall-xy-offset 5)                  ; offset in the x and/or y direction for the first downward-sloping part of the wall (negative)
 (def wall-thickness 2)                  ; wall thickness parameter; originally 5
 
+(def reset-button-diamiter 7.2)         ; for m7 button with margin for error
+
 ;; Settings for column-style == :fixed
 ;; The defaults roughly match Maltron settings
 ;; http://patentimages.storage.googleapis.com/EP0219944A2/imgf0002.png
@@ -1315,6 +1317,11 @@
 (def usb-holder-notch  (translate (map + usb-holder-position [-1.5 (+ 4.4 notch-offset) 2.9]) (cube 31.366 1.3 12.4)))
 (def trrs-notch        (translate (map + usb-holder-position [-10.33 (+ 3.6 notch-offset) 6.6]) (cube 8.4 2.4 19.8)))
 
+; Reset button
+(def reset-button-diamiter 7.2)
+(def reset-button-position (map + [4, 4.4, 18] usb-holder-position))
+(def reset-button (translate reset-button-position (rotate (deg2rad 90) [1, 0, 0] (cylinder (/ reset-button-diamiter 2) (* wall-thickness 3)))))
+
 ; Screw insert definition & position
 (defn screw-insert-shape [bottom-radius top-radius height]
   (union
@@ -1450,6 +1457,7 @@
                                  usb-holder-space
                                  trrs-notch
                                  usb-holder-notch
+                                 reset-button
                                  screw-insert-holes))
                    (translate [0 0 -20] (cube 350 350 40))))
 
